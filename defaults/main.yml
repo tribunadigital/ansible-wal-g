@@ -32,6 +32,8 @@ walg_backup_retain: 2
 walg_cron_enabled: false
 walg_cron_binlog_enabled: false
 
+walg_postgresql_garbage_clean: false
+
 # Override WAL-G settings
 ## Storages
 walg_aws_override: []

@@ -12,6 +12,9 @@ set -o allexport
 source {{ walg_env }}
 set +o allexport
 
+{% if walg_type == 'pg' and walg_postgresql_garbage_clean -%}
+{{ walg_binary }} delete garbage --confirm
+{% endif -%}
 {% if walg_type == 'mongo' -%}
 {{ walg_binary }} delete --purge-garbage --retain-count {{ walg_backup_retain }} --purge-oplog --retain-after `date -Iseconds -d '{{ (walg_backup_retain|int) * 24 }} hours ago'` --confirm
 {% else -%}
